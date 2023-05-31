@@ -47,6 +47,13 @@
               </template>
             </el-table-column>
           </template>
+          <template v-else-if="item.type === 'custom'">
+            <el-table-column align="center" :label="item.label" :width="item.width">
+              <template #default="scope">
+                <slot :name="item.slotName" v-bind="scope"></slot>
+              </template>
+            </el-table-column>
+          </template>
           <template v-else>
             <el-table-column align="center" v-bind="item" />
           </template>
@@ -107,6 +114,12 @@ function fetchPageListData(queryInfo: any = {}) {
   systemStore.getPageListDataAction(props.contentConfig.pageName, { offset, size, ...queryInfo })
 }
 fetchPageListData()
+systemStore.$onAction((arg) => {
+  if (arg.name === 'editPageDataAction' || arg.name === 'newPageDataAction') {
+    currentPage.value = 1
+    pageSize.value = 10
+  }
+})
 
 // 2.展示数据
 const { pageList, pageTotalCount } = storeToRefs(systemStore)

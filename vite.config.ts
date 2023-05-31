@@ -6,7 +6,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { createStyleImportPlugin, ElementPlusResolve } from 'vite-plugin-style-import'
-
+// "husky": "^8.0.0",
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -33,6 +33,16 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://111.230.245.205:8880', //目标url
+        changeOrigin: true, //支持跨域
+        rewrite: (path) => path.replace(/^\/api/, '')
+        //重写路径,替换/api
+      }
     }
   }
 })

@@ -10,7 +10,9 @@
       ref="contentRef"
       @new-data-click="handleNewDataClick"
       @edit-data-click="handleEditDataClick"
-    />
+    >
+      <template #leader="scope"> 111{{ scope.row.leader }}222 </template>
+    </page-content>
     <page-modal :modal-config="modalConfigRef" ref="modalRef" />
   </div>
 </template>

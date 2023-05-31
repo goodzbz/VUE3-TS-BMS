@@ -9,8 +9,8 @@ function usePageModal(editCallback?: callbackType) {
     modalRef.value?.setDialogVisible()
   }
   function handleEditDataClick(data: any) {
-    modalRef.value?.setDialogVisible(false, data)
     if (editCallback) editCallback(data)
+    modalRef.value?.setDialogVisible(false, data)
   }
 
   return {

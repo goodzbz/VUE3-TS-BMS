@@ -23,6 +23,7 @@ const useLoginStore = defineStore('login', {
     async accountLoginAction(account: any) {
       // 1.获取登录信息
       const loginRes = await accountLogin(account)
+      console.log(loginRes.id)
       const { id, token } = loginRes.data
       this.token = token
 

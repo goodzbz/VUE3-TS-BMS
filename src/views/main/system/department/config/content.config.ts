@@ -13,7 +13,8 @@ const contentConfig = {
     { type: 'normal', prop: 'parentId', label: '上级名称', width: 180 },
     { type: 'time', prop: 'createAt', label: '创建时间' },
     { type: 'time', prop: 'updateAt', label: '更新时间' },
-    { type: 'handler', label: '操作', width: 180 }
+    { type: 'handler', label: '操作', width: 180 },
+    { type: 'custom', prop: 'leader', label: '部门领导', width: 180, slotName: 'leader' }
   ]
 }
 
